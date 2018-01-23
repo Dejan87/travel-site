@@ -4,6 +4,25 @@
     +atMedium
         padding: 4.5rem 0
 
+    &--no-b-padding-until-medium
+        padding-bottom: 0
+
+        +atMedium
+            padding-bottom: 4.5rem
+
+    &--no-b-padding-until-large
+        padding-bottom: 0
+
+        +atLarge
+            padding-bottom: 4.5rem
+
     &--blue
         background-color: $base-color
         color: #FFF
+
+    &--testimonials
+        background-color: #e0e6ef
+
+        +atLarge
+            background: url("/assets/images/testimonials-bg.jpg") top center no-repeat
+            background-size: cover

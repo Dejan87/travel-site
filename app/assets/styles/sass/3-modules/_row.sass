@@ -1,14 +1,23 @@
 .row
     +clearfix
 
+    &--t-padding
+        padding-top: 80px
+
     &--gutters
         margin-right: -65px
+
+    &--gutters-small
+        margin-right: -45px
 
     &--gutters-large
         margin-right: -100px
 
     &--gutters > div
         padding-right: 65px
+
+    &--gutters-small > div
+        padding-right: 45px
 
     &--gutters-large > div
         padding-right: 100px
@@ -37,3 +46,43 @@
         
         &__medium-8--smaller
             width: 63%
+
+    +atLarge
+        &__b-margin-until-large
+            margin-bottom: 0
+
+        &__large-4
+            float: left
+            width: 33.33%
+
+        &__large-4--larger
+            width: 37%
+
+        &__large-6
+            float: left
+            width: 50%
+
+        &__large-8
+            float: left
+            width: 66.66%
+        
+        &__large-8--smaller
+            width: 63%
+
+    // Begin equal height rules
+    &--equal-height-at-medium
+        +atMedium
+            display: flex
+
+        & > div
+            float: none
+            display: flex // Height of each div will match the height of the tallest one
+
+    &--equal-height-at-large
+        +atLarge
+            display: flex
+
+        & > div
+            float: none
+            display: flex 
+
