@@ -1,7 +1,12 @@
 .primary-nav
+    padding-top: 10px
+
+    +atMedium
+        padding-top: 0
 
     &--pull-right
-        float: right
+        +atMedium
+            float: right
 
     ul
         margin: 0
@@ -10,12 +15,30 @@
 
     li
         list-style: none
-        float: left
-        padding-right: 20px
+        display: inline-block
+        padding-right: 7px
+
+        +atMedium
+            padding-right: 20px
+            float: left
+            display: block
+
+    li:last-child
+        padding-right: 0
+
+        +atMedium
+            padding-right: 20px
 
     a
         color: #FFF
         font-weight: 300
         text-decoration: none
         display: block
-        padding: 12px 0
+        padding: 5px 8px
+        font-size: .8rem
+        background-color: rgba(47, 85, 114, .5)
+
+        +atMedium
+            font-size: 1rem
+            padding: 12px 0
+            background-color: transparent

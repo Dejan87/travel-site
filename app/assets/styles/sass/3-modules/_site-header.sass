@@ -3,12 +3,17 @@
     position: absolute
     width: 100%
     z-index: 2
+    transition: background-color .3s ease-out
+
+    &--is-expanded
+        background-color: rgba(47, 85, 114, .55)
     
     +atMedium
         background-color: rgba(47, 85, 114, .3)
 
     &__btn-container
-        float: right
+        +atMedium
+            float: right
 
     &__logo
         position: absolute
@@ -27,18 +32,75 @@
         text-indent: -9999px
 
     &__menu-content
-        display: none
+        opacity: 0
+        transform: scale(1.2)
+        transition: all .3s ease-out
+        position: relative // Otherwise browser will ignore our z-index
+        z-index: -10 // -10 so that user can't accidentally click on this content while it's hidden
+        padding-top: 90px
+        text-align: center
 
         +atMedium
-            display: block
+            opacity: 1
+            z-index: 1
+            padding-top: 0
+            transform: scale(1)
+
+        &--is-visible
+            opacity: 1
+            z-index: 1
+            transform: scale(1)
 
     &__menu-icon
         width: 20px
-        height: 20px
-        background-color: #FFF
+        height: 19px
         position: absolute
+        z-index: 10
         top: 10px
         right: 10px
 
+        &::before
+            content: ""
+            position: absolute
+            top: 0
+            left: 0
+            width: 20px
+            height: 3px
+            background-color: #FFF
+            transform-origin: 0 0 // Top left corner is the transform origin, 50% 50% is default (middle)
+            transition: transform .3s ease-out
+
+        &__middle
+            position: absolute
+            top: 8px
+            left: 0
+            width: 20px
+            height: 3px
+            background-color: #FFF
+            transition: all .3s ease-out
+            transform-origin: 0 50%
+
+        &::after
+            content: ""
+            position: absolute
+            bottom: 0
+            left: 0
+            width: 20px
+            height: 3px
+            background-color: #FFF
+            transform-origin: 0 100% // Bottom left corner
+            transition: transform .3s ease-out
+
         +atMedium
             display: none
+
+    &__menu-icon--close-x
+        &::before
+            transform: rotate(45deg) scaleX(1.25) // scaleX increses the width of the bar
+
+        .site-header__menu-icon__middle
+            opacity: 0
+            transform: scaleX(0)
+
+        &::after
+            transform: rotate(-45deg) scaleX(1.25) translateY(1px) 
