@@ -9,7 +9,11 @@
         background-color: rgba(47, 85, 114, .55)
     
     +atMedium
+        position: fixed
         background-color: rgba(47, 85, 114, .3)
+
+        &--dark
+            background-color: rgba(23, 51, 72, .85)
 
     &__btn-container
         +atMedium
@@ -20,6 +24,7 @@
         top: 0
         left: 50%
         transform: translateX(-50%) scale(.8) // Scale function used, to scale the sprite
+        transition: transform .3s ease-out
         transform-origin: 50% 0 // 0 will move element up
         background-color: $base-color
         padding: 25px 36px
@@ -27,6 +32,9 @@
         +atMedium
             left: auto
             transform: translateX(0)
+
+            .site-header--dark & // This sass rule is applied to logo only when --dark class is used
+                transform: scale(.57) // Shrink the logo
 
     &__logo__graphic
         text-indent: -9999px
