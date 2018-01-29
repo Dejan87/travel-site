@@ -11275,6 +11275,7 @@ var StickyHeader = function () {
     function StickyHeader() {
         _classCallCheck(this, StickyHeader);
 
+        this.lazyImages = (0, _jquery2.default)(".lazyload"); // Lazyload/Waypoints problem fix
         this.siteHeader = (0, _jquery2.default)(".site-header");
         this.headerTriggerElement = (0, _jquery2.default)(".large-hero__title");
         this.createHeaderWaypoint();
@@ -11282,9 +11283,19 @@ var StickyHeader = function () {
         this.headerLinks = (0, _jquery2.default)(".primary-nav a");
         this.createPageSectionWaypoints();
         this.addSmoothScrolling();
+        this.refreshWaypoints();
     }
 
     _createClass(StickyHeader, [{
+        key: "refreshWaypoints",
+        value: function refreshWaypoints() {
+            // Every time new image (with class lazyload) is loaded with lazysizes package
+            this.lazyImages.on("load", function () {
+                // Refresh Waypoint measurements
+                Waypoint.refreshAll(); // Waypoint object has a method refreshAll
+            });
+        }
+    }, {
         key: "addSmoothScrolling",
         value: function addSmoothScrolling() {
             this.headerLinks.smoothScroll();
